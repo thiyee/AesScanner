@@ -21,7 +21,7 @@ BOOLEAN SBoxScan(PVOID Base,BYTE* Address, SIZE_T Size,OUT LPVOID* SBoxAddr,OUT 
 	LPVOID* Box=VirtualAlloc(0,sizeof(LPVOID)*256,MEM_COMMIT,PAGE_READWRITE);
 	int BoxCount = 0;
 	int n = 0;
-	for (int i = 0; i < Size; i++) {
+	for (int i = 0; i < Size-256; i++) {
 		for (int j = 0; j < 256; j++) {
 			if (BitMap[Address[i+j] / 64] & (1ui64 << (Address[i+j] % 64))) {
 				break;
